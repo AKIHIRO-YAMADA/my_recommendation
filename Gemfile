@@ -65,3 +65,7 @@ gem 'devise'
 gem 'rename'
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'cancancan'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
