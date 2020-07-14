@@ -60,3 +60,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'rename'
+gem 'rails_admin', '~> 2.0.0.beta'
+gem 'cancancan'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
