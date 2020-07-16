@@ -1,0 +1,13 @@
+<div class="col-sm-3 no-gutters">
+            <h2 class="category_txt white_txt bold">ジャンル検索</h2>
+            <ul class="center">
+                <% categories.each do |category| %>
+                 <% if category.active_status == true %>
+                    <li><%=link_to "#",class: "white_txt" do %>
+                         <%= category.name %>
+                    </li>
+                    <% end %>
+                <% end %>
+                <% end %>
+            </ul>
+        </div>
