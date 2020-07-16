@@ -1,38 +1,17 @@
 <div class="container">
 <div class="row">
-  <div class="col-sm-3 no-gutters">
-        <div class="sidebar orange_bg">
-            <h2 class="category_txt white_txt bold">ジャンル検索</h2>
-        </div>
-  </div>
+  <%= render "home/sidebar", categories: Category.all %>
         <div class="col-sm-8 no-gutters">
         <div class="main_visual">
           <div class="main_txt white_txt">
-            <p class="txtxs sub_txt">あなたが泣ける映画を教えてください。<br>みんなで共有してみんなで泣こう！
+            <p class="txtxs sub_txt">あなたが泣ける映画を教えてください。<br>みんなで共有してみんなで泣こう！</p>
         </div>
       </div>
       <div class="movie_index">
-           <h2 class="midashi_txt brown_txt bold">おすすめ映画</h2>
+           <h2 class="midashi_txt brown_txt bold">おすすめ映画aaaaa</h2>
     </div>
-    <nav class="collapse navbar-collapse" id="navbarList">
-      <ul class="nav navbar-nav navbar-right">
-
-        <% if user_signed_in? %>
-        <li><p class="customer-name_txt brown_txt bold">ようこそ、<%= current_user.name %>さん！</p></li>
-        <li><%= link_to 'マイページ',"#", class: "nav_txt" %></li>
-
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
-
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav_txt" %></li><!--顧客ナビゲーション -->
-
-        <% elsif %>
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
-
-        <li><%= link_to '新規登録', new_user_registration_path, class: "nav_txt" %></li>
-
-        <li><%= link_to 'ログイン', new_user_session_path, class: "nav_txt" %></li>
-        <% end %><!--共通ナビ-->
-      </ul>
-    </nav>
+  </div>
 </div>
 </div>
+
+

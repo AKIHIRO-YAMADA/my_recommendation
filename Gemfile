@@ -70,6 +70,9 @@ gem 'rename'
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'cancancan'
 gem 'dotenv-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+
 
 group :production do
   gem 'mysql2'
