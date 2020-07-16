@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "movie_review"
-set :repo_url, "git@github.com:AKIHIRO-YAMADA/movie_review.git"
+set :repo_url, "https://github.com/AKIHIRO-YAMADA/movie_review.git"
 
 set :deploy_to, "/home/ec2-user/movie_review"
 set :rbenv_ruby, '2.5.7'
