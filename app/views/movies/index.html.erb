@@ -1,0 +1,19 @@
+<div class="row">
+ <%= render "home/sidebar", categories: Category.all %>
+ <div class="col-sm-8 col-8 no-gutters">
+  <div class="movie_index">
+    <h2 class="midashi_txt brown_txt bold">映画一覧 <span class="txts">全<%= Movie.all.count %>件</span></h2>
+	<% @movies.each do |movie| %>
+	<div class="product_index">
+	  <div class="col-sm-4 col product_link">
+	    <%= link_to(movies_show_path(movie)) do %>
+	    
+	    <p class="txts brown_txt"><%= movie.title %></p>
+	    <p class="txts brown_txt">￥<%= movie.impression %></p>
+	    <% end %>
+	  </div>
+	</div>
+	<% end %>
+</div>
+</div>
+</div>

@@ -1,0 +1,37 @@
+<header class="navbar navbar-fixed-top ">
+  <div class="container">
+
+    <p id= "notice" class="notice"><%= notice %></p>
+    <nav class='nav navbar-nav navbar-left' >
+        <li><%= link_to 'movie_review', "#", class: "nav_txt" %></li>
+    </nav>
+        <nav class="collapse navbar-collapse" id="navbarList">
+      <ul class="nav navbar-nav navbar-right">
+
+
+        <% if user_signed_in? %>
+        <li><p class="customer-name_txt brown_txt bold">ようこそ、<%= current_user.name %>さん！</p></li>
+        <li><%= link_to 'マイページ',"#", class: "nav_txt" %></li>
+
+        <li><%= link_to '映画一覧', movies_index_path, class: "nav_txt" %></li>
+
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav_txt" %></li><!--顧客ナビゲーション -->
+
+        <% elsif %>
+        <li><%= link_to '映画一覧', movies_index_path, class: "nav_txt" %></li>
+
+        <li><%= link_to '新規登録', new_user_registration_path, class: "nav_txt" %></li>
+
+        <li><%= link_to 'ログイン', new_user_session_path, class: "nav_txt" %></li>
+        <% end %><!--共通ナビ-->
+        <form role="search" method="get" class="search_form">
+      <div class="search_cont">
+        <input type="search" class="search_field" placeholder="Search" value="" name="s">
+        <span class="search_icon"><i class="fa fa-search"></i></span>
+      </div>
+    </form>
+      </ul>
+    </nav>
+</nav>
+</div>
+</header>
