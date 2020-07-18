@@ -1,2 +1,14 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<div class="row">
+ <%= render "home/sidebar", categories: Category.all %>
+ <div class="col-sm-8 col-8 no-gutters">
+ 	<table class='table'>
+          	<div class="col-md-4 product_right">
+      		<td><%= @movie.title %></td>
+            <td><%= @movie.impression %></td>
+            <% if @user == current_user %>
+            <td><%= link_to 'Edit', edit_movie_path(@movie), class: "btn-sm btn-success edit_book_#{@movie.id}" %></td>
+            <td><%= link_to 'Destroy', @movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{@movie.id}"%></td>
+          <% end %>
+</table>
+</div>
+</div>
