@@ -13,12 +13,12 @@
         <li><p class="customer-name_txt brown_txt bold">ようこそ、<%= current_user.name %>さん！</p></li>
         <li><%= link_to 'マイページ',"#", class: "nav_txt" %></li>
 
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
+        <li><%= link_to '映画一覧', movies_index_path, class: "nav_txt" %></li>
 
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav_txt" %></li><!--顧客ナビゲーション -->
 
         <% elsif %>
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
+        <li><%= link_to '映画一覧', movies_index_path, class: "nav_txt" %></li>
 
         <li><%= link_to '新規登録', new_user_registration_path, class: "nav_txt" %></li>
 
