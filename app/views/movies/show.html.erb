@@ -3,12 +3,17 @@
  <div class="col-sm-8 col-8 no-gutters">
  	<table class='table'>
           	<div class="col-md-4 product_right">
+          	 <% if @movie.image.attached? %>
+			 <td><%= image_tag @movie.image.variant(resize: '100x100') %></td>
+			<% end %>
       		<td><%= @movie.title %></td>
+      		<td><%= @movie.heading %></td>
             <td><%= @movie.impression %></td>
-            <% if @user == current_user %>
+            <td><%= @movie.category %></td>
+            <td><%= @movie.spoiler %></td>
+
             <td><%= link_to 'Edit', edit_movie_path(@movie), class: "btn-sm btn-success edit_book_#{@movie.id}" %></td>
             <td><%= link_to 'Destroy', @movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{@movie.id}"%></td>
-          <% end %>
-</table>
-</div>
+	</table>
+　</div>
 </div>

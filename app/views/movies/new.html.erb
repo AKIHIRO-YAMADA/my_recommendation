@@ -1,2 +1,36 @@
-<h1>Movies#new</h1>
-<p>Find me in app/views/movies/new.html.erb</p>
+<%= form_for(@movie) do |f| %>
+
+  <div class="field row">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'col-xs-12 movie_title' %>
+  </div>
+
+  <div class="field row">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :heading %>
+    <%= f.text_area :heading, class: 'col-xs-12 movie_body'%>
+  </div>
+
+  <div class="field row">
+    <%= f.label :impression %>
+    <%= f.text_area :impression, class: 'col-xs-12 movie_body'%>
+  </div>
+
+  <div class="field row">
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div class="field row">
+    <%= f.radio_button :spoiler, :true %>
+    <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
+    <%= f.radio_button :spoiler, :false %>
+    <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>
