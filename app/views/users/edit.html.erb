@@ -1,2 +1,40 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="row">
+      <div class="form">
+        <h2 class="form_midashi_txt center bold">登録情報編集</h2>
+        <div class="form_cont">
+          <%= form_for(@user) do |f| %>
+
+          <div class="field">
+            <%= f.label :name, "名前", class: "form_label" %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete:"name", class: "form_input_s"%>
+          </div>
+
+          <div class="field">
+           <%= f.label :性別 %><br>
+            <%= radio_button_tag :sex, "1", checked="checked" %>
+            <%= label_tag :男 %>
+            <%= radio_button_tag :sex, "2" %>
+            <%= label_tag :女 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :age, "年齢", class: "form_label" %><br />
+            <%= f.number_field :age, autofocus: true, autocomplete: "age", class: "form_input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :email, "メールアドレス", class: "form_label" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_input" %>
+          </div>
+
+
+          <div class="actions">
+            <%= f.submit "編集", class: "form_submit white_txt bold" %>
+          </div>
+          <% end %>
+          <div class="text-center">
+          <%= link_to "退会する", "#", class: "btn btn-danger"  %>
+      </div>
+        </div>
+      </div>
+    </div>
