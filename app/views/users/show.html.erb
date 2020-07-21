@@ -1,2 +1,34 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row mypage">
+		  <h2 class="midashi_txt"><i class="fas fa-user"></i>マイページ</h2>
+		  <div class="cont-width">
+		  	<div class="col-sm-8">
+		    <h4 class="txtm brown_txt bold">登録情報</h4>
+             	<%= link_to "編集する", edit_user_path(@user.id), class: "edit_btn" %>
+             	<%= link_to "パスワードを変更する", new_user_password_path(current_user.id), class: "destroy_btn" %>
+            	<table class="table table_noborder">
+            		<td><%= attachment_image_tag(@user, :profile_image_id, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+            		<%= @user.profile_image_id%>
+			        <tr>
+			          <th class="bold">氏名</th>
+			          <td><%= @user.name%></td>
+			        </tr>
+			        <tr>
+			          <th class="bold">性別</th>
+			          <td><% @user.sex  %></td>
+				          
+			      
+			        </tr>
+			        <tr>
+			          <th class="bold">年齢</th>
+			          <td><%= @user.age %></td>
+			        </tr>
+			        <tr>
+			          <th class="bold">メールアドレス</th>
+			          <td><%= @user.email %></td>
+			        </tr>
+			    </table>
+			</div>
+			</div>
+	    </div>
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_093819) do
+ActiveRecord::Schema.define(version: 2020_07_21_151411) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_093819) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.boolean "sex", default: true
+    t.integer "sex", default: 1
     t.string "profile_image_id"
     t.integer "age"
     t.boolean "account_status", default: true

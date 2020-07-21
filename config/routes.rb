@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, controllers: {
+			  sessions: 'users/sessions',
+			  passwords: 'users/passwords',
+		      registrations: 'users/registrations',
+			  confirmations: 'users/confirmations'}
   resources :users,only: [:show,:edit,:update,:confirm] do
     resource :relationships, only: [:create, :destroy]
     get 'follows' => 'relationships#follower', as: 'follows'
