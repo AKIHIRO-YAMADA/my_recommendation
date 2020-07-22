@@ -34,7 +34,31 @@
             <td><%= link_to 'Edit', edit_movie_path(@movie), class: "btn-sm btn-success edit_book_#{@movie.id}" %></td>
             <td><%= link_to 'Destroy', @movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{@movie.id}"%></td>
 	</table>
-            
+            <% @movie.movie_comments.each do |movie_comment| %>
+                      <div class="comment-body bb">
+                          <div class="comment-text">
+                              <div class="comment-author clearfix">
+                                  <a href="#" class="link-author"><%= movie_comment.user.name %></a>
+                                  <span class="comment-meta">
+                                  <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %></span>
+                                  </span>
+                              </div>
+                              <div class="comment-entry"><%= movie_comment.comment %></div>
+                              <% if movie_comment.user == current_user%>
+                              <div>
+                                <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                              </div>
+                            <% end %>
+                            <% end %>
+
+            <%= form_for [@movie, @movie_comment] do |f| %>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+              </div>
+            </div>
+            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+          <% end %>
 
 　</div>
 </div>
