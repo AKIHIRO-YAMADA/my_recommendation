@@ -10,10 +10,10 @@
 
   <div class="field">
     <%= f.label :性別 %><br>
-    <%= radio_button_tag :sex, "男", checked="checked" %>
-    <%= label_tag :男 %>
-    <%= radio_button_tag :sex, "女" %>
-    <%= label_tag :女 %>
+  <%= f.radio_button :sex, :male %>
+  <%= f.label :sex, "男性", {value: :male, style: "display: inline-block;"} %>
+  <%= f.radio_button :sex, :female %>
+  <%= f.label :sex, "女性", {value: :female, style: "display: inline-block;"} %>
   </div>
 
   <div class="field">

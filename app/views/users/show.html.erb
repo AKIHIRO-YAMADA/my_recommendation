@@ -6,17 +6,16 @@
              	<%= link_to "編集する", edit_user_path(@user.id), class: "edit_btn" %>
              	<%= link_to "パスワードを変更する", new_user_password_path(current_user.id), class: "destroy_btn" %>
             	<table class="table table_noborder">
-            		<td><%= attachment_image_tag(@user, :profile_image_id, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-            		<%= @user.profile_image_id%>
+            		<tr>
+            		<td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+			        </tr>
 			        <tr>
 			          <th class="bold">氏名</th>
 			          <td><%= @user.name%></td>
 			        </tr>
 			        <tr>
 			          <th class="bold">性別</th>
-			          <td><% @user.sex  %></td>
-				          
-			      
+			          <td><%= @user.sex %></td>
 			        </tr>
 			        <tr>
 			          <th class="bold">年齢</th>

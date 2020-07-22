@@ -1,4 +1,4 @@
 class MovieComment < ApplicationRecord
   belongs_to :user
-  belongs_to :post_image
+  belongs_to :movie
 end
