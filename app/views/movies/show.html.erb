@@ -11,9 +11,9 @@
           <th>感想</th>
           <th>カテゴリー</th>
           <th>ネタバレ</th>
+          <th>投稿者</th>
           <th>コメント数</th>
           <th>いいね数</th>
-          <th>投稿者</th>
         </tr>
       </thead>
       　<%= form_for(@movie) do |f| %>
@@ -30,7 +30,12 @@
           <i class="false_txt">ネタバレを含まない</i>
             　　<% end %>
           </td>
+          <td>
+              <%= link_to user_path(@movie.user), :method => :GET do %>
+                <%= @movie.user.name %>
+          </td>
           <td><%= @movie.movie_comments.count %>件</td>
+
             <% if @movie.favorited_by?(current_user) %>
           <td>
              <%= link_to movie_favorite_path(@movie), method: :delete do %>
@@ -45,10 +50,7 @@
                 <%= @movie.favorites.count %> いいね
               <% end %>
           </td>
-          <td>
-              <%= link_to user_path(@movie.user), :method => :GET do %>
-                <%= @movie.user.name %>
-          </td>
+          
               <% end %>
               <% end %>
 
@@ -62,9 +64,7 @@
     <% @movie.movie_comments.each do |movie_comment| %>
       <div class="comment-body bb">
         <div class="comment-text">
-          <div class="comment-author clearfix">
-            <%= movie_comment.user.name %></a>
-               <h4 class="mb-3">評価：<%= movie_comment.rate %>点 | </h4>
+          <h4 class="mb-3">評価：<%= movie_comment.rate %>点 | </h4>
             <div id="star-rate-<%= movie_comment.id %>"></div>
           <script>
           $('#star-rate-<%= movie_comment.id %>').raty({
@@ -79,8 +79,10 @@
           </script>
                 <div class="posts-product">
                   <img src="<%= movie_comment.movie.image %>" alt="">
-                  <p><%=  movie_comment.movie %></p>
+                 
               <span class="comment-meta">
+                 <span class="comment-author clearfix">
+                  <%= movie_comment.user.name %></span>
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %></span>
               </span>
           </div>
