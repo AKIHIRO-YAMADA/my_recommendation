@@ -15,8 +15,7 @@
 			        </tr>
 			        <tr>
 			          <th class="bold">性別</th>
-			          <td><%= @user.sex %></td>
-			        </tr>
+			          <td><%= @user.sex_name %></td>
 			        <tr>
 			          <th class="bold">年齢</th>
 			          <td><%= @user.age %></td>
@@ -25,6 +24,15 @@
 			          <th class="bold">メールアドレス</th>
 			          <td><%= @user.email %></td>
 			        </tr>
+			        <tboby>
+				       <% @movies.each do |movie| %>
+				       <tr>
+				       	 <td>
+				           <%= link_to movie.title,movie_path(movie.id) %>
+				         </td>
+				       </tr>
+				         <% end %>
+				      </tboby>
 			    </table>
 			</div>
 			</div>

@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
+
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
@@ -26,5 +27,9 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
+  end
+  def sex_name
+    self.sex == 1 ? "男" : self.sex == 2 ? "女" : "未設定"
+  #if文でも可
   end
 end
