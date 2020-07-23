@@ -12,16 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).on('turbolinks:load', function () {
-  $('#star').raty({　　　
-    size: 36,
-    starOff: "/assets/star-off.png",
-    starOn: "/assets/star-on.png",
-    scoreName: "score"
-  });
-});

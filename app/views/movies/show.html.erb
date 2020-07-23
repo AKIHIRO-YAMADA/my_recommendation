@@ -46,8 +46,8 @@
               <% end %>
           </td>
           <td>
-              <%= link_to user_path(@movie), :method => :GET do %>
-                <%= @user.name %>
+              <%= link_to user_path(@movie.user), :method => :GET do %>
+                <%= @movie.user.name %>
           </td>
               <% end %>
               <% end %>
@@ -58,11 +58,28 @@
             <% end %>
             <% end %>
 	</table>
+    
     <% @movie.movie_comments.each do |movie_comment| %>
       <div class="comment-body bb">
         <div class="comment-text">
           <div class="comment-author clearfix">
             <%= movie_comment.user.name %></a>
+               <h4 class="mb-3">評価：<%= movie_comment.rate %>点 | </h4>
+            <div id="star-rate-<%= movie_comment.id %>"></div>
+          <script>
+          $('#star-rate-<%= movie_comment.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= movie_comment.rate %>,
+          });
+          </script>
+                <div class="posts-product">
+                  <img src="<%= movie_comment.movie.image %>" alt="">
+                  <p><%=  movie_comment.movie %></p>
               <span class="comment-meta">
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %></span>
               </span>
@@ -72,18 +89,31 @@
                 <div>
                   <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
                 </div>
-              <% end %>
+                <% end %>
               <% end %>
 
             <%= form_for [@movie, @movie_comment] do |f| %>
             <div class="row">
               <div class="col-sm-12">
-                <script src="assets/jquery.raty.js"></script>
-                  <div id="star"></div>
+                <div class="form-group row" id="star">
+                  <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+                  <%= f.hidden_field :rate, id: :review_star %>
+                </div>
+                <!-- 評価javascript -->
+                <script>
+                $('#star').raty({
+                  size     : 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  scoreName: 'rate',
+                  half: true,
+                });
+                </script>  
                 <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
               </div>
             </div>
-            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+            <%= f.submit "評価する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
           <% end %>
 
 　</div>
