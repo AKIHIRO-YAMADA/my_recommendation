@@ -2,58 +2,84 @@
  <%= render "home/sidebar", categories: Category.all %>
  <div class="col-sm-9 col-9 no-gutters">
  	<table class='table'>
-          	<div class="col-md-4 product_right">
-          	 <% if @movie.image.attached? %>
-			 <td><%= image_tag @movie.image.variant(resize: '100x100') %></td>
-			<% end %>
+    <div class="col-md-4 product_right">
+       <thead class="thead">
+        <tr>
+          <th>写真</th>
+          <th>タイトル</th>
+          <th>あらすじ</th>
+          <th>感想</th>
+          <th>カテゴリー</th>
+          <th>ネタバレ</th>
+          <th>コメント数</th>
+          <th>いいね数</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
+      　<%= form_for(@movie) do |f| %>
+      　<% if @movie.image.attached? %>
+			 　　<td><%= image_tag @movie.image.variant(resize: '100x100') %></td>
+			　<% end %>
       		<td><%= @movie.title %></td>
       		<td><%= @movie.heading %></td>
-            <td><%= @movie.impression %></td>
-            <td><%= @movie.category_id %></td>
-            <td><%= @movie.spoiler %></td>
-              <td>
-                <i class="fa fa-comment"></i>
-                <%= @movie.movie_comments.count %>件</a>
-              </td>
-               <% if @movie.favorited_by?(current_user) %>
-                <td>
-                  <%= link_to movie_favorite_path(@movie), method: :delete do %>
-                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                    <%= @movie.favorites.count %> いいね
-                  <% end %>
-                </td>
-                <% else %>
-                <td>
-                  <%= link_to movie_favorites_path(@movie), method: :post do %>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <%= @movie.favorites.count %> いいね
-                  <% end %>
-                </td>
-                <% end %>
+          <td><%= @movie.impression %></td>
+          <td><%= @movie.category.name %></td>
+          <td><% if @movie.spoiler == true %>
+          <i class="true_txt">ネタバレを含む</i>
+              　<% else %>
+          <i class="false_txt">ネタバレを含まない</i>
+            　　<% end %>
+          </td>
+          <td><%= @movie.movie_comments.count %>件</td>
+            <% if @movie.favorited_by?(current_user) %>
+          <td>
+             <%= link_to movie_favorite_path(@movie), method: :delete do %>
+              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= @movie.favorites.count %> いいね
+              <% end %>
+          </td>
+              <% else %>
+          <td>
+              <%= link_to movie_favorites_path(@movie), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= @movie.favorites.count %> いいね
+              <% end %>
+          </td>
+          <td>
+              <%= link_to user_path(@movie), :method => :GET do %>
+                <%= @user.name %>
+          </td>
+              <% end %>
+              <% end %>
 
+            <% if @movie.user == current_user %> 
             <td><%= link_to 'Edit', edit_movie_path(@movie), class: "btn-sm btn-success edit_book_#{@movie.id}" %></td>
             <td><%= link_to 'Destroy', @movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{@movie.id}"%></td>
+            <% end %>
+            <% end %>
 	</table>
-            <% @movie.movie_comments.each do |movie_comment| %>
-                      <div class="comment-body bb">
-                          <div class="comment-text">
-                              <div class="comment-author clearfix">
-                                  <a href="#" class="link-author"><%= movie_comment.user.name %></a>
-                                  <span class="comment-meta">
-                                  <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %></span>
-                                  </span>
-                              </div>
-                              <div class="comment-entry"><%= movie_comment.comment %></div>
-                              <% if movie_comment.user == current_user%>
-                              <div>
-                                <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
-                              </div>
-                            <% end %>
-                            <% end %>
+    <% @movie.movie_comments.each do |movie_comment| %>
+      <div class="comment-body bb">
+        <div class="comment-text">
+          <div class="comment-author clearfix">
+            <%= movie_comment.user.name %></a>
+              <span class="comment-meta">
+                <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %></span>
+              </span>
+          </div>
+            <div class="comment-entry"><%= movie_comment.comment %></div>
+              <% if movie_comment.user == current_user%>
+                <div>
+                  <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                </div>
+              <% end %>
+              <% end %>
 
             <%= form_for [@movie, @movie_comment] do |f| %>
             <div class="row">
               <div class="col-sm-12">
+                <script src="assets/jquery.raty.js"></script>
+                  <div id="star"></div>
                 <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
               </div>
             </div>

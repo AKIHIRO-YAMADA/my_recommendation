@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
   def show
   	 @movie = Movie.find(params[:id])
      @movie_comment = MovieComment.new
-  	 @user = @movie.user
+  	 @user = User.find_by(id: params[:id])
 
   end
 
