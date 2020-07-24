@@ -1,3 +1,4 @@
+<%= render 'layouts/errors', obj: @movie %>
 <%= form_for(@movie) do |f| %>
 
   <div class="field row">
@@ -16,20 +17,8 @@
   </div>
 
   <div class="field row">
-    <%= f.label :感想 %>
-    <%= f.text_area :impression, class: 'col-xs-12 movie_body'%>
-  </div>
-
-  <div class="field row">
     <%= f.label :ジャンル %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name %>
-  </div>
-
-  <div class="field row">
-    <%= f.radio_button :spoiler, :true %>
-    <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
-    <%= f.radio_button :spoiler, :false %>
-    <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
   </div>
 
   <div class="actions row">

@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 映画レビューサイト
 
-Things you may want to cover:
+## サイト概要
+ユーザーがお勧めする映画を投稿し、コメントや評価ができるサイト。
 
-* Ruby version
+### サイトテーマ
+流行の映画だけでなく、名作に出会える。
 
-* System dependencies
 
-* Configuration
+### テーマを選んだ理由
+外出自粛が続いており家で時間を過ごすことが増えたので、そういった方にサイトを使ってもらい、質の良い映画を見てほしいと思ったから。
 
-* Database creation
+### ターゲットユーザ
+外出を自粛してる人
+良い作品を選びたい人
 
-* Database initialization
+### 主な利用シーン
+家で映画を見る時。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 設計書
+一覧表示機能
+詳細表示機能
+映画投稿機能
+写真投稿機能
+いいね機能
+コメント機能
+評価機能
+ユーザー登録機能
+管理者登録機能
+ジャンル登録機能
+検索機能
+### 機能一覧
+https://docs.google.com/spreadsheets/d/19Vn2GWrw3u7cH5I1XVkt8tH7GdiNJ50sl_2GrJzmSSo/edit#gid=0

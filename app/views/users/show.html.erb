@@ -1,8 +1,8 @@
 <div class="row mypage">
-		  <h2 class="midashi_txt"><i class="fas fa-user"></i>ユーザーページ</h2>
+		  <h2 class="midashi_txt"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>ユーザーページ</h2>
 		  <div class="cont-width">
 		  	<div class="col-sm-8">
-		    <h4 class="txtm brown_txt bold">登録情報</h4>
+		    <h3 class="txtm brown_txt bold">登録情報</h3>
 		      <% if @user == current_user %>
              	<%= link_to "編集する", edit_user_path(@user.id), class: "edit_btn" %>
              	<%= link_to "パスワードを変更する", new_user_password_path(current_user.id), class: "destroy_btn" %>

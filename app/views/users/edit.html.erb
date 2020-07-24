@@ -14,12 +14,7 @@
 
           <div class="field">
            <%= f.label :性別 %><br>
-            <%= radio_button_tag :sex, "1", checked="checked" %>
-            <%= label_tag :男性 %>
-            <%= radio_button_tag :sex, "2" %>
-            <%= label_tag :女性 %>
-            <%= radio_button_tag :sex, "3" %>
-            <%= label_tag :未選択 %>
+          <%= @user.sex_name %>
           </div>
 
           <div class="field">

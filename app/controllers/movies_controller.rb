@@ -23,8 +23,7 @@ class MoviesController < ApplicationController
      if @movie.save
       redirect_to @movie
      else
-      @movies = Movie.all
-      render :index
+      render :new
     end
    end
 
@@ -33,7 +32,7 @@ class MoviesController < ApplicationController
      if @movie.update(movie_params)
       redirect_to @movie
      else
-     render 'edit'
+     render :edit
      end
   end
 
@@ -43,7 +42,6 @@ class MoviesController < ApplicationController
      redirect_to movies_url
   end
   def search
-    byebug
     # application controllerで生成した@qを利用して検索する
     @q_movies = @q.result.page(params[:page]).per(10)
     render :index
@@ -51,7 +49,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-      params.require(:movie).permit(:title, :image, :heading, :impression, :category_id, :spoiler)
+      params.require(:movie).permit(:title, :image, :heading, :category_id )
   end
 end
 
