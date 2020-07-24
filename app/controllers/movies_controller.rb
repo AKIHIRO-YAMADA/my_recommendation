@@ -42,6 +42,12 @@ class MoviesController < ApplicationController
      @movie.destroy
      redirect_to movies_url
   end
+  def search
+    byebug
+    # application controllerで生成した@qを利用して検索する
+    @q_movies = @q.result.page(params[:page]).per(10)
+    render :index
+  end
 
   private
   def movie_params
