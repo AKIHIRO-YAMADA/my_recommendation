@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root 'home#top'
 get 'search', to: 'movies#search'
-resources :movies,only: [:show,:edit,:index,:new,:update,:create,] do
+resources :movies,only: [:show,:edit,:index,:new,:update,:create, :destroy] do
 resources :favorites, only: [:create, :destroy]
 resources :movie_comments, only: [:create, :destroy]
 end
