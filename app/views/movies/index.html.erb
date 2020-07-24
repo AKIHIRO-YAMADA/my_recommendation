@@ -3,29 +3,53 @@
  <div class="col-sm-8 col-8 no-gutters">
   <div class="movie_index">
     <h2 class="midashi_txt brown_txt bold">映画一覧 <span class="txts">全<%= Movie.all.count %>件</span></h2>
-	<% @movies.each do |movie| %>
-	<div class="product_index">
-	  <div class="col-sm-4 col product_link">
-	    <%= link_to(movie_path(movie)) do %>
-	     <% if movie.image.attached? %>
-			 <p><%= image_tag movie.image.variant(resize: '100x100') %></p>
-		   <% end %>
-      		<p><%= movie.title %></p>
-      		<p><%= movie.heading %></p>
-            <p><%= movie.impression %></p>
-            <p><%= movie.category.name %></p>
-          <% if movie.spoiler == true %>
-          <p class="true_txt">ネタバレを含む</p>
-          <% else %>
-         <p class="false_txt">ネタバレを含まない</p>
-        <% end %>
-        <p><%= movie.movie_comments.count %>件</p>
-        <p><%= movie.favorites.count %> いいね</p>
-      </td>
-	    <% end %>
-	  </div>
-	</div>
-	<% end %>
+    <div class="product_index">
+    <% if @movies %>
+	   <% @movies.each do |movie| %>
+      <div class="col-sm-4 col product_link">
+  	    <%= link_to(movie_path(movie)) do %>
+  	     <% if movie.image.attached? %>
+  			 <p><%= image_tag movie.image.variant(resize: '100x100') %></p>
+  		   <% end %>
+        		<p><%= movie.title %></p>
+        		<p><%= movie.heading %></p>
+              <p><%= movie.impression %></p>
+              <p><%= movie.category.name %></p>
+            <% if movie.spoiler == true %>
+            <p class="true_txt">ネタバレを含む</p>
+            <% else %>
+           <p class="false_txt">ネタバレを含まない</p>
+          <% end %>
+          <p><%= movie.movie_comments.count %>件</p>
+          <p><%= movie.favorites.count %> いいね</p>
+        </td>
+      </div>
+  	 <% end %>
+  	<% end %>
+    <% else @q_movies %>
+      <div class="products-box">
+        <% @q_movies.each do |movie| %>
+          <div class="col-sm-4 col product_link">
+            <%= link_to(movie_path(movie)) do %>
+              <% if movie.image.attached? %>
+              <p><%= image_tag movie.image.variant(resize: '100x100') %></p>
+            <% end %>
+              <p><%= movie.title %></p>
+              <p><%= movie.heading %></p>
+              <p><%= movie.impression %></p>
+              <p><%= movie.category.name %></p>
+            <% if movie.spoiler == true %>
+              <p class="true_txt">ネタバレを含む</p>
+            <% else %>
+              <p class="false_txt">ネタバレを含まない</p>
+            <% end %>
+              <p><%= movie.movie_comments.count %>件</p>
+              <p><%= movie.favorites.count %> いいね</p>
+            <% end %>
+        </div>
+       </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-</div>
-</div>
+
