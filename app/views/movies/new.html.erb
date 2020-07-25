@@ -1,0 +1,27 @@
+<%= render 'layouts/errors', obj: @movie %>
+<%= form_for(@movie) do |f| %>
+
+  <div class="field row">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, class: 'col-xs-12 movie_title' %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :画像 %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :あらすじ %>
+    <%= f.text_area :heading, class: 'col-xs-12 movie_body'%>
+  </div>
+
+  <div class="field row">
+    <%= f.label :ジャンル %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>

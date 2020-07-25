@@ -1,5 +1,7 @@
 <header class="navbar navbar-fixed-top ">
   <div class="container">
+    <div class="header_background">
+
 
     <p id= "notice" class="notice"><%= notice %></p>
     <nav class='nav navbar-nav navbar-left' >
@@ -11,27 +13,30 @@
 
         <% if user_signed_in? %>
         <li><p class="customer-name_txt brown_txt bold">ようこそ、<%= current_user.name %>さん！</p></li>
-        <li><%= link_to 'マイページ',"#", class: "nav_txt" %></li>
+        <li><%= link_to 'マイページ',user_path(current_user), class: "nav_txt" %></li>
 
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
+        <li><%= link_to '映画一覧', movies_path, class: "nav_txt" %></li>
+
+         <li><%= link_to '新規投稿', new_movie_path, class: "nav_txt" %></li>
 
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav_txt" %></li><!--顧客ナビゲーション -->
 
         <% elsif %>
-        <li><%= link_to '映画一覧', "#", class: "nav_txt" %></li>
+        <li><%= link_to '映画一覧', movies_path, class: "nav_txt" %></li>
 
         <li><%= link_to '新規登録', new_user_registration_path, class: "nav_txt" %></li>
 
         <li><%= link_to 'ログイン', new_user_session_path, class: "nav_txt" %></li>
         <% end %><!--共通ナビ-->
-        <form role="search" method="get" class="search_form">
-      <div class="search_cont">
-        <input type="search" class="search_field" placeholder="Search" value="" name="s">
-        <span class="search_icon"><i class="fa fa-search"></i></span>
-      </div>
-    </form>
+        <div>
+          <%= search_form_for @q, url: search_path, class: "nav navbar-nav navbar-right" do |f| %>
+          <%= f.search_field :title_cont, autofocus: true, placeholder: "検索キーワード"%>
+            <%= f.submit class: "btn btn-default" %>
+          <% end %>
+        </div>
       </ul>
     </nav>
 </nav>
+</div>
 </div>
 </header>

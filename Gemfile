@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -72,6 +73,11 @@ gem 'cancancan'
 gem 'dotenv-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
+gem 'rails-i18n'
+gem 'pry-byebug'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'ransack'
 
 
 group :production do
