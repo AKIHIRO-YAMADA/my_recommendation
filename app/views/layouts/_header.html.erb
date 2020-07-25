@@ -24,14 +24,13 @@
         <% elsif %>
         <li><%= link_to '映画一覧', movies_path, class: "nav_txt" %></li>
 
-
         <li><%= link_to '新規登録', new_user_registration_path, class: "nav_txt" %></li>
 
         <li><%= link_to 'ログイン', new_user_session_path, class: "nav_txt" %></li>
         <% end %><!--共通ナビ-->
         <div>
           <%= search_form_for @q, url: search_path, class: "nav navbar-nav navbar-right" do |f| %>
-          <%= f.search_field :title, autofocus: true, placeholder: "検索キーワード"%>
+          <%= f.search_field :title_cont, autofocus: true, placeholder: "検索キーワード"%>
             <%= f.submit class: "btn btn-default" %>
           <% end %>
         </div>
