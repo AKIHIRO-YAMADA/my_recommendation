@@ -16,6 +16,93 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*--------------共通(ヘッダー用）--------------------*/
+header{
+	width: 100%;
+	background-color: #EEE2D3;
+	padding: 10px 0px;
+}
+.customer-name_txt {
+	margin-top: 20px;
+	margin-right: 10px;
+}
+.notice {
+	color: #fff;
+	font-weight: 600;
+}
+.navbar-nav > li > a {
+	padding:  10px;
+}
+.nav_txt {
+	color: #C39C89;
+	font-size: 15px;
+	background-color: #fff;
+	border-radius: 15px;
+	margin: 10px;
+}
+.navbar-toggler{
+	display: none;
+}
+/*--------------サーチフォーム）--------------------*/
+.search_form {
+    position: absolute;
+   	bottom: -40px;
+    right: 15%;
+}
+.search_field {
+	border-radius: 15px;
+	border: 2px solid #CCCCCC;
+}
+.search_field:focus {
+	outline: none;
+	border-radius: 15px;
+	border: 2px solid #777;
+}
+.search_cont {
+	position: relative;
+}
+.search_icon {
+	color:  #CCCCCC;
+	position: absolute;
+	right: 10px;
+	top: 4px;
+}
+
+/*--------------サイドバー--------------------*/
+.sidebar {
+	width: 100%;
+	text-align: center;
+	padding-top: 10%;
+	height: 160vh;
+}
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
+.category_txt {
+	display: inline-block;
+	width: 80%;
+	font-size: 18px;
+	background-image: url(category_bg.png);
+	background-repeat: no-repeat;
+	background-size:contain;
+	background-position: center;
+}
+.sidebar_img {
+	width: 70%;
+	margin: 30px 0px 10px 0px;
+}
+.sidebar li {
+	margin: 10px 0px;
+}
+
+/*--------------フッター--------------------*/
+footer {
+	position: center;
+	background-color: #EEE2D3;
+	padding-top: 10px;}
+
+/*--------------トップページ--------------------*/
 
 body { padding-top: 120px; }
 
