@@ -1,0 +1,35 @@
+ <div class="movie_index">
+    <h2 class="midashi_txt brown_txt bold">映画一覧 <span class="txts">全<%= Movie.all.count %>件</span></h2>
+    <div class="product_index">
+    <% if movies %>
+	   <% movies.each do |movie| %>
+      <div class="col-sm-4 col product_link">
+        <h4><%= movie.title %></h4>
+  	    <%= link_to(movie_path(movie)) do %>
+  	     <% if movie.image.attached? %>
+  			 <p><%= image_tag movie.image.variant(resize: '200x200') %></p>
+  		   <% end %>
+         <% end %>
+          <span>ジャンル：<%= movie.category.name %></span><br>
+          <span>コメント<%= movie.movie_comments.count %>件</span><br>
+          <span>いいね<%= movie.favorites.count %>件</span><br>
+        </td>
+      </div>
+  	<% end %>
+    <% else q_movies %>
+      <div class="products-box">
+        <% q_movies.each do |movie| %>
+          <div class="col-sm-4 col product_link">
+            <%= link_to(movie_path(movie)) do %>
+              <% if movie.image.attached? %>
+              <p><%= image_tag movie.image.variant(resize: '200x200') %></p>
+            <% end %>
+              <span><%= movie.title %></p>
+              <span><%= movie.category.name %></span><br>
+              <span><%= movie.movie_comments.count %>件</span><br>
+              <span><%= movie.favorites.count %> いいね</span><br>
+            <% end %>
+        </div>
+       </div>
+      <% end %>
+    <% end %>

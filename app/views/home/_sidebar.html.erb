@@ -3,7 +3,7 @@
             <ul class="center">
                 <% categories.each do |category| %>
                  <% if category.active_status == true %>
-                    <li><%=link_to "#",class: "white_txt" do %>
+                    <li><%=link_to movies_path(:category_id => category.id)  do %>
                          <%= category.name %>
                     </li>
                     <% end %>
