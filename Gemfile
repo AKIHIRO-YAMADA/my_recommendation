@@ -80,6 +80,7 @@ gem "refile-mini_magick"
 gem 'ransack'
 gem 'kaminari', '~> 1.2.1'
 gem 'rubocop-airbnb'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'mysql2'

@@ -1,7 +1,6 @@
-<div class="movie_comments">
+
+    <div class="movie_comments">
     <% movie.movie_comments.each do |movie_comment| %>
-      <div class="comment-body bb">
-        <div class="comment-text">
           <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
             <div id="star-rate-<%= movie_comment.id %>"></div>
               <script>
@@ -15,7 +14,7 @@
                 score: <%= movie_comment.rate %>,
               });
               </script>
-                <div class="posts-movie">
+                <div class="comments-movie">
                   <img src="<%= movie_comment.movie.image %>" alt="">
               <span class="comment-meta">
                 <span class="comment-spoiler clearfix">
@@ -31,12 +30,7 @@
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %>
                 </span>
               </span>
-          </div>
-            <div class="comment-entry"><%= movie_comment.comment %></div>
-              <% if movie_comment.user == current_user%>
-                <div>
-                  <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
                 </div>
-              <% end %>
+            <div class="comment-entry"><%= movie_comment.comment %></div>
     <% end %>
     </div>
