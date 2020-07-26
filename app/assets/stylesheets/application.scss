@@ -18,9 +18,15 @@
 
 /*--------------共通(ヘッダー用）--------------------*/
 header{
+	color: #fff;
 	width: 100%;
-	background-color: #EEE2D3;
+	background-color: black;
 	padding: 10px 0px;
+}
+.nav_txt_title{
+	color: #fff;
+	font-size: 40px;
+
 }
 .customer-name_txt {
 	margin-top: 20px;
@@ -34,15 +40,16 @@ header{
 	padding:  10px;
 }
 .nav_txt {
-	color: #C39C89;
+	color: #fff;
 	font-size: 15px;
-	background-color: #fff;
+	background-color: black;
 	border-radius: 15px;
 	margin: 10px;
 }
 .navbar-toggler{
 	display: none;
 }
+
 /*--------------サーチフォーム）--------------------*/
 .search_form {
     position: absolute;
@@ -79,30 +86,32 @@ header{
   position: sticky;
   top: 60px;
 }
-.category_txt {
-	display: inline-block;
-	width: 80%;
-	font-size: 18px;
-	background-image: url(category_bg.png);
-	background-repeat: no-repeat;
-	background-size:contain;
-	background-position: center;
-}
-.sidebar_img {
-	width: 70%;
-	margin: 30px 0px 10px 0px;
-}
+
 .sidebar li {
 	margin: 10px 0px;
 }
 
 /*--------------フッター--------------------*/
+
+.wrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
 footer {
+	color: #fff;
+	width: 100%;
 	position: center;
-	background-color: #EEE2D3;
-	padding-top: 10px;}
+	background-color: black;
+	text-align: center;
+    padding: 30px 0;
+	}
+
 
 /*--------------トップページ--------------------*/
 
-body { padding-top: 120px; }
+body { padding-top: 140px;
+}
 
