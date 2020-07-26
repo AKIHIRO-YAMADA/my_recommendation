@@ -1,4 +1,4 @@
-<div class="row">
+<div class="field row">
   <%= render "home/sidebar", categories: Category.all %>
   <div class="col-sm-9 col-12 no-gutters">
     <table class="table table_noborder">
@@ -66,77 +66,7 @@
           <% end %>
       <% end %>
     </table>
-    <div class="movie_comments">
-    <% @movie.movie_comments.each do |movie_comment| %>
-      <div class="comment-body bb">
-        <div class="comment-text">
-          <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
-            <div id="star-rate-<%= movie_comment.id %>"></div>
-              <script>
-              $('#star-rate-<%= movie_comment.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= movie_comment.rate %>,
-              });
-              </script>
-                <div class="posts-movie">
-                  <img src="<%= movie_comment.movie.image %>" alt="">
-              <span class="comment-meta">
-                <span class="comment-spoiler clearfix">
-                  <% if movie_comment.spoiler == true %>
-                    <span style="color:red">ネタバレを含む</span>
-              　　 <% else %>
-                    <span style="color:blue">ネタバレを含まない</span>
-            　　   <% end %>
-                </span>
-                <span class="comment-author clearfix">
-                  投稿者：<%= movie_comment.user.name %>
-                </span>
-                <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %>
-                </span>
-              </span>
-          </div>
-            <div class="comment-entry"><%= movie_comment.comment %></div>
-              <% if movie_comment.user == current_user%>
-                <div>
-                  <%= link_to "削除", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
-                </div>
-              <% end %>
-    <% end %>
-    </div>
-            <%= form_for [@movie, @movie_comment] do |f| %>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group row" id="star">
-                  <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
-                  <%= f.hidden_field :rate, id: :review_star %>
-                </div>
-                <div class="field row">
-                  <%= f.radio_button :spoiler, :true %>
-                  <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
-                  <%= f.radio_button :spoiler, :false %>
-                  <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
-                </div>
-                <!-- 評価javascript -->
-                <script>
-                $('#star').raty({
-                  size     : 36,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'rate',
-                  half: true,
-                });
-                </script>
-                <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-              </div>
-            </div>
-            <%= f.submit "評価する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-          <% end %>
-
+    <%= render "movie_comments/comments_index", movie:@movie %>
+    <%= render "movie_comments/commentform", movie:@movie, movie_comment:@movie_comment %>
 　</div>
 </div>

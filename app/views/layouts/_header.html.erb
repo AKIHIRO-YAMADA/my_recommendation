@@ -5,14 +5,14 @@
 
     <p id= "notice" class="notice"><%= notice %></p>
     <nav class='nav navbar-nav navbar-left' >
-        <li><%= link_to 'movie_review',root_path, class: "nav_txt" %></li>
+        <li><%= link_to 'movie_review',root_path, class: "nav_txt_title" %></li>
     </nav>
         <nav class="collapse navbar-collapse" id="navbarList">
       <ul class="nav navbar-nav navbar-right">
 
 
         <% if user_signed_in? %>
-        <li><p class="customer-name_txt brown_txt bold">ようこそ、<%= current_user.name %>さん！</p></li>
+        <li><p class="customer-name_txt">ようこそ、<%= current_user.name %>さん！</p></li>
         <li><%= link_to 'マイページ',user_path(current_user), class: "nav_txt" %></li>
 
         <li><%= link_to '映画一覧', movies_path, class: "nav_txt" %></li>

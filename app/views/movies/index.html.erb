@@ -1,7 +1,7 @@
 <div class="row">
  <%= render "home/sidebar", categories: Category.all %>
  <div class="col-sm-8 col-8 no-gutters">
- <%= render "movies/movielist", movies: @movies, q_movies:@q_movies %>
+ <%= render "movies/movielist", movies: @movies %>
   </div>
   <%= paginate @movies %>
 </div>

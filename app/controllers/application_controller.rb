@@ -9,7 +9,8 @@ before_action :set_search_movie
 
   	protected
     def set_search_movie
-      @q = Movie.ransack(params[:q])
+      @q = Movie.page(params[:page]).per(9).ransack(params[:q])
+      @movies = @q.result.page(params[:page]).per(9)
       # 検索バー表示のために常に@qを生成する
       # 検索時以外params[:q]はnilだが、空のransackオブジェクト生成の動作になる
     end
