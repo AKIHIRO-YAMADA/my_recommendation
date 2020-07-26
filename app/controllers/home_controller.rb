@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def top
-  	@movies = Movie.all
+    @movies = Movie.all
   end
 end
