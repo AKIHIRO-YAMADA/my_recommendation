@@ -1,3 +1,5 @@
+ <div class="row">
+  <div class="row box">
  <div class="movie_index">
     <h2 class="midashi_txt brown_txt bold">映画一覧 <span class="txts">全<%= Movie.all.count %>件</span></h2>
     <div class="product_index">
@@ -24,7 +26,7 @@
               <% if movie.image.attached? %>
               <p><%= image_tag movie.image.variant(resize: '200x200') %></p>
             <% end %>
-              <span><%= movie.title %></p>
+              <span><%= movie.title %></span>
               <span><%= movie.category.name %></span><br>
               <span><%= movie.movie_comments.count %>件</span><br>
               <span><%= movie.favorites.count %> いいね</span><br>
@@ -32,4 +34,8 @@
         <% end %>
     <% end %>
       </div>
+    </div>
+  </div>
+</div>
+</div>
 </div>

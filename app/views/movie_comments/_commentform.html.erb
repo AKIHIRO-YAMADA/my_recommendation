@@ -1,6 +1,6 @@
-<%= form_for [@movie, @movie_comment] do |f| %>
-  <div class="row">
+<div class="row">
   <div class="col-sm-12">
+<%= form_for [@movie, @movie_comment] do |f| %>
     <div class="form-group row" id="star">
       <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
       <%= f.hidden_field :rate, id: :review_star %>
