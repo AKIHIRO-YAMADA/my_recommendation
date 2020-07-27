@@ -1,7 +1,7 @@
 
     <div class="movie_comments">
-    
     <% movie.movie_comments.each do |movie_comment| %>
+    <div class ="box">
           <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
             <div id="star-rate-<%= movie_comment.id %>"></div>
               <script>
@@ -21,9 +21,9 @@
                 <span class="comment-spoiler clearfix">
                   <% if movie_comment.spoiler == true %>
                     <span style="color:red">ネタバレを含む</span>
-              　　 <% else %>
+               <% else %>
                     <span style="color:blue">ネタバレを含まない</span>
-            　　   <% end %>
+               <% end %>
                 </span>
                 <span class="comment-author clearfix">
                   投稿者：<%= movie_comment.user.name %>
@@ -33,8 +33,9 @@
               </span>
                 </div>
             <div class="comment-entry"><%= truncate(movie_comment.comment) do %>
-              省略されました。続きを読むには<%= link_to 'ここ', movie_path(movie.id) %>をクリックしてください。
-<% end %>
+              省略されました。続きを読むには<%= link_to 'ここ', movie_movie_comment_path(movie.id, movie_comment.id) %>をクリックしてください。
+    <% end %>
             </div>
+          </div>
     <% end %>
     </div>

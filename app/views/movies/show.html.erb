@@ -3,7 +3,7 @@
   <div class="col-sm-9 col-12 no-gutters">
     <table class="table table_noborder">
       <%= form_for(@movie) do |f| %>
-      　<% if @movie.image.attached? %>
+        <% if @movie.image.attached? %>
           <tr>
             <th class="bold">写真</th>
     			  <td><%= image_tag @movie.image.variant(resize: '100x100') %></td>
@@ -67,6 +67,7 @@
       <% end %>
     </table>
     <%= render "movie_comments/comments_index", movie:@movie %>
+    <%= paginate @movie_comments %>
     <%= render "movie_comments/commentform", movie:@movie, movie_comment:@movie_comment %>
-　</div>
+  </div>
 </div>
