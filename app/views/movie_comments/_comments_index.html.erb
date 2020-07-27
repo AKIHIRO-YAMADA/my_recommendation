@@ -1,5 +1,6 @@
 
     <div class="movie_comments">
+    
     <% movie.movie_comments.each do |movie_comment| %>
           <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
             <div id="star-rate-<%= movie_comment.id %>"></div>
@@ -31,6 +32,9 @@
                 </span>
               </span>
                 </div>
-            <div class="comment-entry"><%= movie_comment.comment %></div>
+            <div class="comment-entry"><%= truncate(movie_comment.comment) do %>
+              省略されました。続きを読むには<%= link_to 'ここ', movie_path(movie.id) %>をクリックしてください。
+<% end %>
+            </div>
     <% end %>
     </div>
