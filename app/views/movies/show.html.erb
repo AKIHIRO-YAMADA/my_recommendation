@@ -6,7 +6,7 @@
         <% if @movie.image.attached? %>
           <tr>
             <th class="bold">写真</th>
-    			  <td><%= image_tag @movie.image.variant(resize: '100x100') %></td>
+    			  <td><%= image_tag @movie.image.variant(resize: '200x200') %></td>
           </tr>
         <% end %>
         <tr>

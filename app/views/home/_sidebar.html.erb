@@ -1,17 +1,15 @@
-
-
 <div class="col-sm-3 no-gutters">
-<div class="row box">
-    <h2 class="category_txt">ジャンル検索</h2>
-        <ul class="center">
-            <% categories.each do |category| %>
-                <% if category.active_status == true %>
-                <li><%=link_to movies_path(:category_id => category.id)  do %>
-                    <%= category.name %>
-                </li>
+    <div class="row box">
+        <h2 class="category_txt">ジャンル検索</h2>
+            <ul class="category_list">
+                <% categories.each do |category| %>
+                    <% if category.active_status == true %>
+                        <li><%=link_to movies_path(:category_id => category.id)  do %>
+                            <%= category.name %>
+                        </li>
+                        <% end %>
+                    <% end %>
                 <% end %>
-                <% end %>
-            <% end %>
-        </ul>
-</div>
+            </ul>
+    </div>
 </div>
