@@ -1,11 +1,20 @@
 <div class="row">
-
- <%= render "home/sidebar", categories: Category.all %>
-  <div class="main_txt white_txt">
-            <p class="txtxs sub_txt">あなたが泣ける映画を教えてください。<br>みんなで共有してみんなで泣こう！</p>
+      <div class="col-lg-12">
+        </div>
+        <div class="main_visual">
+        <div class="bs-component">
+          <div class="jumbotron">
+            <h2 class="display-3">今すぐ泣ける!〜涙活のススメ〜</h2>
+            <p class="lead">あなたがオススメする泣ける映画を教えてください！泣きたい時に泣ける映画がきっとある。</p>
+            <hr class="my-4">
+            <p>涙活とは？<%= link_to 'もっと詳しく',about_path, class:"btn btn-primary btn-lg" %></p>
           </div>
- <div class="col-sm-8 col-8 no-gutters">
- <%= render "movies/movielist", movies: @movies, q_movies:@q_movies %>
-  </div>
-</div>
+        </div>
+    </div>
 
+    </div>
+	<%= render "home/sidebar", categories: Category.all %>
+		<div class="col-sm-8 col-8 no-gutters">
+	 	<%= render "movies/movielist", movies: @movies, q_movies:@q_movies %>
+	  	</div>
+</div>
