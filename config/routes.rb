@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get 'about' , to: 'home#about'
   resources :movies, only: [:show, :edit, :index, :new, :update, :create, :destroy] do
     resources :favorites, only: [:create, :destroy]
-    resources :movie_comments, only: [:create, :destroy]
+    resources :movie_comments, only: [:show, :create, :destroy]
   end
 end

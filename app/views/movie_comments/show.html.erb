@@ -1,0 +1,15 @@
+<div class="comments-movie">
+  <span class="comment-spoiler clearfix">
+      <% if @movie_comment.spoiler == true %>
+        <span style="color:red">ネタバレを含む</span>
+      <% else %>
+        <span style="color:blue">ネタバレを含まない</span>
+      <% end %>
+  </span>
+  <span class="comment-author clearfix">
+    投稿者：<%= @movie_comment.user.name %>
+  </span>
+  <span class="comment-date"><%= @movie_comment.created_at.strftime('%Y/%m/%d') %></span>
+</div>
+<div class="comment-entry"><%= @movie_comment.comment %>
+</div>
