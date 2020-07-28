@@ -5,7 +5,6 @@
       <%= form_for(@movie) do |f| %>
         <% if @movie.image.attached? %>
           <tr>
-            <th class="bold">写真</th>
     			  <td><%= image_tag @movie.image.variant(resize: '200x200') %></td>
           </tr>
         <% end %>
@@ -66,7 +65,7 @@
           <% end %>
       <% end %>
     </table>
-    <%= render "movie_comments/comments_index", movie:@movie %>
+    <%= render "movie_comments/comments_index", movie:@movie, movie_comments:@movie_comments %>
     <%= paginate @movie_comments %>
     <%= render "movie_comments/commentform", movie:@movie, movie_comment:@movie_comment %>
   </div>
