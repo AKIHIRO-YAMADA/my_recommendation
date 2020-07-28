@@ -29,8 +29,8 @@ class MoviesController < ApplicationController
       redirect_to @movie
     else
       render :new
-   end
-   end
+    end
+  end
 
   def update
     @movie = Movie.find(params[:id])

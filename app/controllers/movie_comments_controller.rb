@@ -1,6 +1,6 @@
 class MovieCommentsController < ApplicationController
-  def  show
-      @movie_comment = MovieComment.find(params[:id])
+  def show
+    @movie_comment = MovieComment.find(params[:id])
   end
 
   def create

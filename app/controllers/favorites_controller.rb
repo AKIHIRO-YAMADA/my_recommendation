@@ -11,5 +11,5 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(movie_id: movie.id)
     favorite.destroy
     redirect_to movie_path(movie)
-end
+  end
 end
