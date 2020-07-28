@@ -3,7 +3,7 @@
         <h2 class="midashi_txt brown_txt bold">映画一覧 <span class="txts">全<%= Movie.all.count %>件</span></h2>
           <% movies.each do |movie| %>
             <div class="col-sm-4 col">
-              <div class="box">
+              <div class="box 1">
                 <h4><%= movie.title %></h4>
   	             <%= link_to(movie_path(movie)) do %>
   	           　<% if movie.image.attached? %>

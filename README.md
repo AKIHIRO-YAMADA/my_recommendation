@@ -30,6 +30,6 @@
 ユーザー登録機能
 管理者登録機能
 ジャンル登録機能
-検索機能
+検索機能(映画のタイトル、カテゴリー)
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/19Vn2GWrw3u7cH5I1XVkt8tH7GdiNJ50sl_2GrJzmSSo/edit#gid=0
