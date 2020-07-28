@@ -5,10 +5,8 @@
   </div>
   <nav class="collapse navbar-collapse" id="navbarList">
   	<ul class="nav navbar-nav navbar-right">
-  	<% if user_signed_in? %>
+  	<% if user_signed_in? && current_user.admin %>
   		<li><%= link_to '管理者の方はこちら',rails_admin_path(current_user), class: "nav_txt" %></li>
-  	<% elsif %>
-		<li><%= link_to '管理者の方はこちら',about_path, class: "nav_txt" %></li>
 	<% end %>
 </ul>
 </nav>

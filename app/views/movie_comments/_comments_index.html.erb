@@ -32,15 +32,15 @@
                 </span>
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %>
                 </span>
+                <span>
+          <% if movie_comment.user == current_user %>
+            <%= link_to '削除', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comment.id}"%>
+              </span>
+          <% end %>
               </span>
                 </div>
             <div class="comment-entry"><%= truncate(movie_comment.comment) do %>
               省略されました。続きを読むには<%= link_to 'ここ', movie_movie_comment_path(movie.id, movie_comment.id) %>をクリックしてください。
-              <span>
-          <% if movie_comment.user == current_user %>
-            <%= link_to '削除', movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comemmnt.id}"%>
-              </span>
-          <% end %>
     <% end %>
             </div>
           </div>
