@@ -1,6 +1,6 @@
 
     <div class="movie_comments">
-    <% movie.movie_comments.each do |movie_comment| %>
+    <% movie_comments.each do |movie_comment| %>
     <div class ="box">
           <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
             <div id="star-rate-<%= movie_comment.id %>"></div>
@@ -26,19 +26,21 @@
                <% end %>
                 </span>
                 <span class="comment-author clearfix">
+                  <%= link_to user_path(movie_comment.user), :method => :GET do %>
                   投稿者：<%= movie_comment.user.name %>
+                  <% end %>
                 </span>
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %>
                 </span>
+                <span>
+          <% if movie_comment.user == current_user %>
+            <%= link_to '削除', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comment.id}"%>
+              </span>
+          <% end %>
               </span>
                 </div>
             <div class="comment-entry"><%= truncate(movie_comment.comment) do %>
               省略されました。続きを読むには<%= link_to 'ここ', movie_movie_comment_path(movie.id, movie_comment.id) %>をクリックしてください。
-              <div>
-          <% if movie.movie_coment.user == current_user %>
-            <%= link_to '削除', @movie, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comemmnt.id}"%></td>
-              </div>
-          <% end %>
     <% end %>
             </div>
           </div>
