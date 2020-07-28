@@ -21,9 +21,15 @@
         </tr>
         <tr>
           <th class="bold">ユーザー</th>
+          <% if user_signed_in? %>
           <td>
             <%= link_to user_path(@movie.user), :method => :GET do %>
               <%= @movie.user.name %>
+            <% end %>
+          </td>
+          <% else %>
+          <td>
+            <%= @movie.user.name %>
             <% end %>
           </td>
         </tr>
