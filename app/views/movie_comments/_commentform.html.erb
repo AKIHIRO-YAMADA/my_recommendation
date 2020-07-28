@@ -5,14 +5,12 @@
 <%= render 'layouts/errors', obj:movie_comment %>
     <div class="form-group row" id="star">
       <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
-      <%= f.hidden_field :rate, id: :review_star %>
     </div>
     <div class="field row">
       <%= f.radio_button :spoiler, :true %>
       <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
       <%= f.radio_button :spoiler, :false %>
       <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
-      <%= f.hidden_field :spoiler, id: :spoiler %>
     </div>
     <!-- 評価javascript -->
     <script>
@@ -21,7 +19,7 @@
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'rate',
+      scoreName: 'movie_comment[rate]',
       half: true,
     });
     </script>
