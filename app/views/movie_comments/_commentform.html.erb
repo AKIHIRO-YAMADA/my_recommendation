@@ -11,6 +11,7 @@
       <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
       <%= f.radio_button :spoiler, :false %>
       <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
+      <%= f.hidden_field :spoiler, id: :spoiler %>
     </div>
     <!-- 評価javascript -->
     <script>
