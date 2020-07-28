@@ -1,48 +1,51 @@
-
-    <div class="movie_comments">
-    <% movie_comments.each do |movie_comment| %>
+<div class="movie_comments">
+  <% movie_comments.each do |movie_comment| %>
     <div class ="box">
-          <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
-            <div id="star-rate-<%= movie_comment.id %>"></div>
-              <script>
-              $('#star-rate-<%= movie_comment.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= movie_comment.rate %>,
-              });
-              </script>
-                <div class="comments-movie">
-                  <img src="<%= movie_comment.movie.image %>" alt="">
+      <h4 class="mb-3">評価：<%= movie_comment.rate %>点</h4>
+        <div id="star-rate-<%= movie_comment.id %>"></div>
+          <script>
+          $('#star-rate-<%= movie_comment.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= movie_comment.rate %>,
+          });
+          </script>
+            <div class="comments-movie">
+              <img src="<%= movie_comment.movie.image %>" alt="">
               <span class="comment-meta">
                 <span class="comment-spoiler clearfix">
-                  <% if movie_comment.spoiler == true %>
-                    <span style="color:red">ネタバレを含む</span>
-               <% else %>
-                    <span style="color:blue">ネタバレを含まない</span>
-               <% end %>
+                <% if movie_comment.spoiler == true %>
+                  <span style="color:red">ネタバレを含む</span>
+                <% else %>
+                  <span style="color:blue">ネタバレを含まない</span>
+                <% end %>
                 </span>
+                <% if user_signed_in? %>
                 <span class="comment-author clearfix">
                   <%= link_to user_path(movie_comment.user), :method => :GET do %>
                   投稿者：<%= movie_comment.user.name %>
                   <% end %>
+                <% else %>
+                  投稿者：<%= movie_comment.user.name %>
+                <% end %>
                 </span>
                 <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d') %>
                 </span>
                 <span>
-          <% if movie_comment.user == current_user %>
-            <%= link_to '削除', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comment.id}"%>
+                  <% if movie_comment.user == current_user %>
+                    <%= link_to '削除', movie_movie_comment_path(movie_comment.movie_id, movie_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_movie_#{movie_comment.id}"%>
+                </span>
+                  <% end %>
               </span>
-          <% end %>
-              </span>
-                </div>
+            </div>
             <div class="comment-entry"><%= truncate(movie_comment.comment) do %>
               省略されました。続きを読むには<%= link_to 'ここ', movie_movie_comment_path(movie.id, movie_comment.id) %>をクリックしてください。
-    <% end %>
+            <% end %>
             </div>
-          </div>
-    <% end %>
-    </div>
+      </div>
+  <% end %>
+</div>

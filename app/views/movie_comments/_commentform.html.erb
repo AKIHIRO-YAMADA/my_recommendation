@@ -1,33 +1,33 @@
 <div class="row">
   <div class="row box">
-  <div class="col-sm-12">
-<%= form_for [movie, movie_comment] do |f| %>
-<%= render 'layouts/errors', obj:movie_comment %>
-    <div class="form-group row" id="star">
-      <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
-    </div>
-    <div class="field row">
-      <%= f.radio_button :spoiler, :true %>
-      <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
-      <%= f.radio_button :spoiler, :false %>
-      <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
-    </div>
-    <!-- 評価javascript -->
-    <script>
-    $('#star').raty({
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'movie_comment[rate]',
-      half: true,
-    });
-    </script>
-    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-
-  <%= f.submit "評価する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-  </div>
+    <div class="col-sm-12">
+      <% if user_signed_in? %>
+      <%= form_for [movie, movie_comment] do |f| %>
+      <%= render 'layouts/errors', obj:movie_comment %>
+      <div class="form-group row" id="star">
+        <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
+      </div>
+      <div class="field row">
+        <%= f.radio_button :spoiler, :true %>
+        <%= f.label :spoiler, "ネタバレを含む", {value: :true, style: "display: inline-block;"} %>
+        <%= f.radio_button :spoiler, :false %>
+        <%= f.label :spoiler, "ネタバレを含まない", {value: :false, style: "display: inline-block;"} %>
+      </div>
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'movie_comment[rate]',
+          half: true,
+        });
+        </script>
+          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <%= f.submit "評価する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+      </div>
+    <% end %>
+    <% end %>
   </div>
 </div>
-<% end %>
 
