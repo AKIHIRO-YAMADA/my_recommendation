@@ -3,8 +3,10 @@
 		<div class="cont-width">
 		  	<div class="col-sm-8">
 		    <h3 class="txtm">登録情報</h3>
+		      <% if @user == current_user %>
              	<%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-primary" %>
              	<%= link_to "パスワードを変更する", new_user_password_path(current_user.id), class: "btn btn-success" %>
+              <% end %>
             	<table class="table table_noborder">
             		<tr>
             		<td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
