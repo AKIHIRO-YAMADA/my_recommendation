@@ -2,8 +2,8 @@
   <div class="row box">
     <div class="col-sm-12">
       <% if user_signed_in? %>
+      <%= render 'layouts/errors', obj:@movie_comment %>
       <%= form_for [movie, movie_comment] do |f| %>
-      <%= render 'layouts/errors', obj:movie_comment %>
       <div class="form-group row" id="star">
         <%= f.label :rate,'評価', class:'col-md-1 col-form-label' %>
       </div>
