@@ -73,6 +73,7 @@
     </table>
     <%= render "movie_comments/comments_index", movie:@movie, movie_comments:@movie_comments %>
     <%= paginate @movie_comments %>
+    <%= render 'layouts/errors', obj:@movie_comment %>
     <%= render "movie_comments/commentform", movie:@movie, movie_comment:@movie_comment %>
   </div>
 </div>
